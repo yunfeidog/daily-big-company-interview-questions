@@ -1,0 +1,28 @@
+{
+  "name": "daily-big-company-interview-questions",
+  "version": "1.0.0",
+  "author": "yunfeidog",
+  "description": "A project of vuepress-theme-hope",
+  "keywords": ["vuepress", "docs", "blog", "vuepress-theme-hope"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yunfeidog/daily-big-company-interview-questions"
+  },
+
+  "license": "MIT",
+  "type": "module",
+  "homepage": "https://yunfeidog.github.io/daily-big-company-interview-questions/",
+  "scripts": {
+    "docs:build": "vuepress build src",
+    "docs:clean-dev": "vuepress dev src --clean-cache",
+    "docs:dev": "vuepress dev src"
+  },
+  "devDependencies": {
+    "@vuepress/client": "2.0.0-beta.53",
+    "@vuepress/plugin-register-components": "^2.0.0-beta.51",
+    "element-plus": "^2.2.25",
+    "vue": "^3.2.45",
+    "vuepress": "2.0.0-beta.53",
+    "vuepress-theme-hope": "2.0.0-beta.130"
+  }
+}

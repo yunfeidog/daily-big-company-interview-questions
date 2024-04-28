@@ -1,0 +1,61 @@
+# 工作流的名称，如果省略，则使用当前文件名
+name: Auto Deploy
+
+# 从工作流生成的工作流运行的名称，如果省略，则使用提交时的commit信息
+run-name: Deploy by @${{ github.actor }}
+
+# 触发部署的条件
+on:
+  # 每当 push 到 master 分支时触发部署
+  push:
+    branches:
+      - main
+
+# 当前流程要执行的任务，可以是多个。[my_first_job]就是一个任务
+jobs:
+  my_first_job:
+    # 任务的名称，不设置则默认my_first_job
+    name: build-and-deploy
+
+    # 运行所需要的虚拟机环境
+    runs-on: ubuntu-latest
+
+    # 每个任务下的运行步骤，短横杠 - 表示一个步骤，从上至下依次执行。
+    steps:
+      # clone 该仓库的源码到工作流中
+      - name: Clone Code
+        uses: actions/checkout@v3
+        with:
+          # "最近更新时间"等 git 日志相关信息，需要拉取全部提交记录
+          fetch-depth: 0
+
+        # 2. 安装依赖并构建文档
+      - name: 设置 Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: yarn
+
+
+      - name: 安装依赖
+        run: yarn install --frozen-lockfile # 这里是安装依赖，如果你的文档构建失败，可以尝试删除 --frozen-lockfile
+
+      - name: 构建文档
+        env:
+          NODE_OPTIONS: --max_old_space_size=8192 # 这里是设置内存，如果你的文档构建失败，可以尝试增大内存
+        run: |-
+          yarn run docs:build
+          > src/.vuepress/dist/.nojekyll
+
+      # 查看 workflow 的文档来获取更多信息
+      # @see https://github.com/crazy-max/ghaction-github-pages
+      - name: Deploy to GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          # 部署到 gh-pages 分支
+          target_branch: gh-pages
+          # 部署目录为 VuePress 的默认输出目录
+          build_dir: src/.vuepress/dist
+        env:
+          # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
