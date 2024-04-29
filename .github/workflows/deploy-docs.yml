@@ -6,17 +6,17 @@ run-name: Deploy by @${{ github.actor }}
 
 
 # 触发部署的条件
-on:
-  # 每天0点部署
-  schedule:
-    - cron: '0 0 * * *'
+#on:
+#  # 每天0点部署
+#  schedule:
+#    - cron: '0 0 * * *'
 
 ## 触发部署的条件
-#on:
-#  # 每当 push 到 main 分支时触发部署
-#  push:
-#    branches:
-#      - main
+on:
+  # 每当 push 到 main 分支时触发部署
+  push:
+    branches:
+      - main
 
 # 当前流程要执行的任务，可以是多个。[my_first_job]就是一个任务
 jobs:
