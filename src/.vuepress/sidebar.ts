@@ -6,5 +6,6 @@ export const Sidebar = sidebar({
     "/interviews/": "structure",
 
     "/internship/": "structure",
+    "/frontEnd/": "structure",
     "/experience/": "structure",
 });
