@@ -4,9 +4,7 @@
 
 ## **先做两道算法题**
 
-![image-20240802220147968](C:\Users\LoveF\AppData\Roaming\Typora\typora-user-images\image-20240802220147968.png)
 
-![image-20240802220233474](C:\Users\LoveF\AppData\Roaming\Typora\typora-user-images\image-20240802220233474.png)
 
          k个一组反转链表(15min)
          手动构造链表和输入输出,力扣原题
@@ -27,7 +25,7 @@
 
 ## **索引底层的数据结构?**
 
-![image-20240802220626659](C:\Users\LoveF\AppData\Roaming\Typora\typora-user-images\image-20240802220626659.png)
+
 
 ## 你在实习的时候给表加索引,会锁表对吧?有没有一种办法你给一个表上锁,但是不影响其他事务对这个表的读和写?
 
@@ -78,5 +76,4 @@
 其实这里面试官就在引导我增加MySQL的实例来提高QPS了…当时脑袋闷闷的,还是在说Redis
 刷脏的这个线程不要超过MySQLTPS限制即可
 
-![image-20240802221447329](C:\Users\LoveF\AppData\Roaming\Typora\typora-user-images\image-20240802221447329.png)
 
